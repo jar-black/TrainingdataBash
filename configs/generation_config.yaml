@@ -1,0 +1,117 @@
+# Generation Configuration for Bash Tool-Calling Dataset
+# Target: 50,000 examples
+
+dataset:
+  total_examples: 50000
+  train_split: 0.95
+  validation_split: 0.05
+  output_format: jsonl
+  seed: 42
+
+# Distribution across categories
+distribution:
+  file_operations: 10000      # 20%
+  text_processing: 8000       # 16%
+  git: 6000                   # 12%
+  system_info: 5000           # 10%
+  network: 5000               # 10%
+  archive: 4000               # 8%
+  package_management: 4000    # 8%
+  permissions: 3000           # 6%
+  user_environment: 3000      # 6%
+  mixed_complex: 2000         # 4%
+
+# Difficulty distribution within each category
+difficulty:
+  easy: 0.30      # Single command, simple flags
+  medium: 0.50    # 2-3 commands, pipes, common patterns
+  hard: 0.20      # Complex workflows, error recovery
+
+# Multi-turn settings
+turns:
+  min_turns: 2
+  max_turns: 8
+  avg_turns: 4
+  follow_up_probability: 0.6
+  error_recovery_probability: 0.10
+
+# System prompt variations
+system_prompts:
+  - "You are a helpful assistant with access to a bash tool for executing commands on a Linux system. Use it to help users accomplish their tasks."
+  - "You are a Linux system administrator assistant. You have access to a bash tool to execute commands and help users manage their systems."
+  - "You are a command-line expert assistant with bash access. Help users accomplish tasks efficiently using Linux commands."
+  - "You are a helpful AI with bash tool access. Execute commands to help users with file management, system administration, and development tasks."
+
+# Common file/directory names for realistic examples
+variables:
+  usernames:
+    - user
+    - developer
+    - admin
+    - john
+    - alice
+    - bob
+    - deploy
+    - www-data
+
+  project_names:
+    - myproject
+    - webapp
+    - api-server
+    - frontend
+    - backend
+    - data-pipeline
+    - ml-model
+    - microservice
+    - auth-service
+    - payment-api
+
+  file_extensions:
+    code: [".py", ".js", ".ts", ".go", ".rs", ".java", ".cpp", ".c", ".rb", ".php"]
+    config: [".yaml", ".yml", ".json", ".toml", ".ini", ".conf", ".env"]
+    data: [".csv", ".json", ".xml", ".parquet", ".sql"]
+    logs: [".log", ".out", ".err"]
+    docs: [".md", ".txt", ".rst", ".pdf"]
+    archive: [".tar.gz", ".zip", ".tar.bz2", ".7z", ".rar"]
+
+  directories:
+    - src
+    - lib
+    - tests
+    - docs
+    - config
+    - scripts
+    - data
+    - logs
+    - tmp
+    - cache
+    - build
+    - dist
+    - public
+    - static
+    - assets
+    - migrations
+
+  git_branches:
+    - main
+    - master
+    - develop
+    - feature/user-auth
+    - feature/api-v2
+    - feature/dashboard
+    - bugfix/login-issue
+    - hotfix/security-patch
+    - release/v1.2.0
+
+  package_names:
+    python: [numpy, pandas, requests, flask, django, fastapi, pytest, black, mypy, sqlalchemy]
+    node: [express, react, vue, lodash, axios, typescript, jest, webpack, eslint, prettier]
+    system: [htop, vim, tmux, curl, wget, jq, tree, ncdu, ripgrep, fd-find]
+
+  error_messages:
+    permission_denied: "Permission denied"
+    file_not_found: "No such file or directory"
+    command_not_found: "command not found"
+    disk_full: "No space left on device"
+    connection_refused: "Connection refused"
+    timeout: "Connection timed out"
